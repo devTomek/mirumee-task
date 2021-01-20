@@ -1,0 +1,40 @@
+@import "../../../variables.scss";
+
+.collapsibleCard {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+
+	.card {
+		width: 100%;
+		max-width: 730px;
+		height: 15px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 8px 0;
+		font-size: 16px;
+		padding: 15px;
+		background-color: $white;
+		box-shadow: 0px 2px 1px rgba(196, 196, 196, 0.2);
+		border-radius: 4px;
+	
+		button {
+			border: none;
+			outline: none;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 30px;
+			height: 30px;
+			background-color: $white;
+			cursor: pointer;
+		}
+	}
+
+	.open {
+		height: 100%;
+		flex-direction: column;
+	}
+}

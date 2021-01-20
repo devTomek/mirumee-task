@@ -1,0 +1,10 @@
+@import "../../../variables.scss";
+
+.container {
+	width: 100%;
+	max-width: 790px;
+	background-color: $gray;
+	height: 500px;
+	display: flex;
+	flex-direction: column;
+}
