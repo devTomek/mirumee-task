@@ -13,7 +13,9 @@ const CollapsibleCard: FC<IProps> = ({ onClick, isOpen, title, children }) => {
 	return (
 		<div className="collapsibleCard">
 			<div className="card">
-				<p>{title}</p>
+				<span className="title">
+					<p>{title}</p>
+				</span>
 				<button onClick={onClick}>
 					<img src={isOpen ? arrowClose : arrowOpen} alt="arrowButton" />
 				</button>

@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import "./Table.scss";
 import { Column, useSortBy, useTable } from "react-table";
 import { IPlanet } from "../../../../../api/planet/types";
 
@@ -16,42 +17,62 @@ const Table: FC<IProps> = ({ data, columns }) => {
 		prepareRow,
 	} = useTable({ columns, data }, useSortBy);
 
+	//▼ ▲
 	return (
-		<table {...getTableProps()}>
-			<thead>
-				{headerGroups.map((headerGroup) => (
-					<tr {...headerGroup.getHeaderGroupProps()}>
-						{headerGroup.headers.map((column) => (
-							// @ts-ignore
-							<th {...column.getHeaderProps(column.getSortByToggleProps())}>
-								{column.render("Header")}
-								<span>
-									{/* @ts-ignore */}
-									{column.isSorted
-										? // @ts-ignore
-										  column.isSortedDesc
-											? " 🔽"
-											: " 🔼"
-										: ""}
-								</span>
-							</th>
-						))}
-					</tr>
-				))}
-			</thead>
-			<tbody {...getTableBodyProps()}>
-				{rows.map((row, i) => {
-					prepareRow(row);
-					return (
-						<tr {...row.getRowProps()}>
-							{row.cells.map((cell) => {
-								return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
-							})}
+		<div className="table">
+			<table {...getTableProps()}>
+				<thead>
+					{headerGroups.map((headerGroup) => (
+						<tr {...headerGroup.getHeaderGroupProps()}>
+							{headerGroup.headers.map((column) => (
+								// @ts-ignore
+								<th {...column.getHeaderProps(column.getSortByToggleProps())}>
+									<div className="header-content">
+										{column.render("Header")}
+										<span className="arrow">
+											{/* @ts-ignore */}
+											{column.isSorted ? (
+												// @ts-ignore
+												column.isSortedDesc ? (
+													<>
+														<div className="arrow-up">▲</div>
+														<div className="arrow-down teal">▼</div>
+													</>
+												) : (
+													<>
+														<div className="arrow-up teal">▲</div>
+														<div className="arrow-down">▼</div>
+													</>
+												)
+											) : (
+												<>
+													<div className="arrow-up">▲</div>
+													<div className="arrow-down">▼</div>
+												</>
+											)}
+										</span>
+									</div>
+								</th>
+							))}
 						</tr>
-					);
-				})}
-			</tbody>
-		</table>
+					))}
+				</thead>
+				<tbody {...getTableBodyProps()}>
+					{rows.map((row, i) => {
+						prepareRow(row);
+						return (
+							<tr {...row.getRowProps()}>
+								{row.cells.map((cell) => {
+									return (
+										<td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+									);
+								})}
+							</tr>
+						);
+					})}
+				</tbody>
+			</table>
+		</div>
 	);
 };
 

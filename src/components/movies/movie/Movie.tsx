@@ -8,7 +8,8 @@ interface IProps {
 }
 
 const Movie: FC<IProps> = ({ title, planetUrls }) => {
-	const [isOpen, setIsOpen] = useState(false);
+	//todo change to false
+	const [isOpen, setIsOpen] = useState(true);
 
 	const toggle = () => {
 		setIsOpen((prevIsOpen) => !prevIsOpen);
