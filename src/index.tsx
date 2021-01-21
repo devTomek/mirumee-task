@@ -4,6 +4,7 @@ import "normalize.css";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "./translation/i18n";
 
 ReactDOM.render(
 	<React.StrictMode>

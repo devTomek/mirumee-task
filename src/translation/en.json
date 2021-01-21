@@ -1,0 +1,9 @@
+{
+	"name": "Planet Name",
+	"rotation_period": "Rotation period",
+	"orbital_period": "Orbital period",
+	"diameter": "Diameter",
+	"climate": "Climate",
+	"surface_water": "Surface water",
+	"population": "Population"
+}

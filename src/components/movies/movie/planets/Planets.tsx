@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import "./Planets.scss";
+import { useTranslation } from "react-i18next";
 import { Column } from "react-table";
 import { getPlanet } from "../../../../api/planet/planet";
 import { IPlanet } from "../../../../api/planet/types";
@@ -12,6 +12,7 @@ interface IProps {
 const Planets: FC<IProps> = ({ planetUrls }) => {
 	const [planets, setPlanets] = useState<IPlanet[]>([]);
 	const [columns, setColumns] = useState<Column<IPlanet>[]>([]);
+	const { t } = useTranslation();
 
 	useEffect(() => {
 		const planetPromises = planetUrls.map((url) => {
@@ -30,18 +31,14 @@ const Planets: FC<IProps> = ({ planetUrls }) => {
 		if (planet) {
 			// @ts-ignore
 			const cols: Column<IPlanet>[] = Object.keys(planet).map((column) => ({
-				Header: column,
+				Header: t(column),
 				accessor: column,
 			}));
 			setColumns(cols);
 		}
-	}, [planets]);
+	}, [planets, t]);
 
-	return (
-		<div className="planets">
-			<Table data={planets} columns={columns} />
-		</div>
-	);
+	return <Table data={planets} columns={columns} />;
 };
 
 export default Planets;
