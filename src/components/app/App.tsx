@@ -4,7 +4,7 @@ import "./App.scss";
 import { IMovie } from "../../api/movie/types";
 import Movie from "../movie/Movie";
 import Container from "../shared/container/Container";
-import { getMovies } from "../../api/movie/getMovies";
+import { getMovies } from "../../api/movie/movie";
 
 const App: FC = () => {
 	const [movies, setMovies] = useState<IMovie[]>([]);
@@ -20,7 +20,7 @@ const App: FC = () => {
 			<Container>
 				<img src={logo} alt="logo" className="logo" />
 				{movies.map(({ title, planets }) => (
-					<Movie key={title} title={title} planets={planets} />
+					<Movie key={title} title={title} planetUrls={planets} />
 				))}
 			</Container>
 		</div>

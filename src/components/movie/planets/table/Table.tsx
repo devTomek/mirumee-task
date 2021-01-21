@@ -1,16 +1,13 @@
 import React, { FC } from "react";
 import { Column, useSortBy, useTable } from "react-table";
-import { IPlanet } from "../../../api/planet/types";
-
-//todo
-export interface IRow extends IPlanet {}
+import { IPlanet } from "../../../../api/planet/types";
 
 interface IProps {
-	columns: Column[];
-	data: any;
+	data: IPlanet[];
+	columns: Column<IPlanet>[];
 }
 
-const Table: FC<IProps> = ({ columns, data }) => {
+const Table: FC<IProps> = ({ data, columns }) => {
 	const {
 		getTableProps,
 		getTableBodyProps,

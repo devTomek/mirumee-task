@@ -1,25 +1,22 @@
-import React, { FC, useEffect, useMemo, useState } from "react";
-import { IPlanet } from "../../api/planet/types";
+import React, { FC, useState } from "react";
 import CollapsibleCard from "../shared/collapsibleCard/CollapsibleCard";
-import Table from "./table/Table";
+import Planets from "./planets/Planets";
 
 interface IProps {
 	title: string;
-	planets: IPlanet[];
+	planetUrls: string[];
 }
 
-const Movie: FC<IProps> = ({ title, planets }) => {
+const Movie: FC<IProps> = ({ title, planetUrls }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggle = () => {
 		setIsOpen((prevIsOpen) => !prevIsOpen);
 	};
 
-	useEffect(() => {});
-
 	return (
 		<CollapsibleCard title={title} onClick={toggle} isOpen={isOpen}>
-			{/* <Table data={rows} columns={columns} /> */}
+			<Planets planetUrls={planetUrls} />
 		</CollapsibleCard>
 	);
 };
