@@ -16,6 +16,7 @@ const Planets: FC<IProps> = ({ planetUrls }) => {
 	const [columns, setColumns] = useState<Column<IPlanet>[]>([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const { t } = useTranslation();
+	const spinnerHeight = 50 * planetUrls.length;
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -46,7 +47,10 @@ const Planets: FC<IProps> = ({ planetUrls }) => {
 	return (
 		<div className="planets">
 			{isLoading ? (
-				<div className="spinner-wrapper">
+				<div
+					className="spinner-wrapper"
+					style={{ height: `${spinnerHeight}px` }}
+				>
 					<Spinner />
 				</div>
 			) : (
