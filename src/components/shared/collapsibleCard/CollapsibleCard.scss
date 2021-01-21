@@ -17,8 +17,9 @@
 		font-size: $l;
 		padding: 15px;
 		background-color: $white;
-		box-shadow: 0px 2px 1px rgba(196, 196, 196, 0.2);
+		box-shadow: $box-shadow-l;
 		border-radius: 4px;
+		z-index: 1;
 
 		.title {
 			color: $teal;
@@ -41,5 +42,10 @@
 	.open {
 		height: 100%;
 		flex-direction: column;
+		transform: translateY(-20px);
+		margin-bottom: -10px;
+		z-index: 0;
+		box-shadow: $box-shadow-m;
+		border-radius: 0;
 	}
 }
