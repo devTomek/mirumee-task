@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { getMovies } from "../../api/movie/movie";
 import { IMovie } from "../../api/movie/types";
-import Movie from "../movie/Movie";
+import Movie from "./movie/Movie";
 
 const Movies: FC = () => {
 	const [movies, setMovies] = useState<IMovie[]>([]);

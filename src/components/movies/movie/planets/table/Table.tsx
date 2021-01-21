@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Column, useSortBy, useTable } from "react-table";
-import { IPlanet } from "../../../../api/planet/types";
+import { IPlanet } from "../../../../../api/planet/types";
 
 interface IProps {
 	data: IPlanet[];

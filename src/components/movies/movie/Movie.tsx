@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import CollapsibleCard from "../shared/collapsibleCard/CollapsibleCard";
+import CollapsibleCard from "../../shared/collapsibleCard/CollapsibleCard";
 import Planets from "./planets/Planets";
 
 interface IProps {

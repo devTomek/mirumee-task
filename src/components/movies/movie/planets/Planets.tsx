@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from "react";
 import "./Planets.scss";
 import { Column } from "react-table";
-import { getPlanet } from "../../../api/planet/planet";
-import { IPlanet } from "../../../api/planet/types";
+import { getPlanet } from "../../../../api/planet/planet";
+import { IPlanet } from "../../../../api/planet/types";
 import Table from "./table/Table";
 
 interface IProps {
