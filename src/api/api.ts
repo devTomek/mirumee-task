@@ -4,6 +4,6 @@ export const get = async <T>(url: string): Promise<T | undefined> => {
 		const json = await response.json();
 		return json.results;
 	} catch (e) {
-		console.log(e);
+		console.error(e);
 	}
 };
