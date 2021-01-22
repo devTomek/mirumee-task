@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Input from "../../shared/input/Input";
@@ -6,9 +6,12 @@ import { useTranslation } from "react-i18next";
 import search from "../../../assets/SEARCH.svg";
 import Button from "../../shared/button/Button";
 import "./AddMovieForm.scss";
+import PlanetsDropdown from "./planetDropdown/PlanetsDropdown";
+import ChosenPlanets from "./chosenPlanets/ChosenPlanets";
 
 const AddMovieForm: FC = () => {
 	const { t } = useTranslation();
+	const [chosenPlanets, setChosenPlanets] = useState<string[]>([]);
 	const formik = useFormik({
 		initialValues: {
 			movieTitle: "",
@@ -50,6 +53,9 @@ const AddMovieForm: FC = () => {
 						}
 					/>
 				</div>
+				{chosenPlanets.length > 0 ? (
+					<ChosenPlanets planets={chosenPlanets} />
+				) : null}
 				<div className="input-wrapper">
 					<Input
 						id="planet"
@@ -64,6 +70,10 @@ const AddMovieForm: FC = () => {
 								? formik.errors.planet
 								: ""
 						}
+					/>
+					<PlanetsDropdown
+						searchValue={formik.values.planet}
+						setChosenPlanets={setChosenPlanets}
 					/>
 				</div>
 				<div className="button-wrapper">

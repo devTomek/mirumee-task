@@ -6,4 +6,5 @@ export interface IPlanet {
 	climate: string;
 	surface_water: string;
 	population: string;
+	url?: string;
 }
