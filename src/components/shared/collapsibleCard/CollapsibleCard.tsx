@@ -11,14 +11,16 @@ interface IProps {
 
 const CollapsibleCard: FC<IProps> = ({ onClick, isOpen, title, children }) => {
 	return (
-		<div className="collapsibleCard">
+		<div className="collapsible-card">
 			<div className="card">
 				<span className="title">
 					<p>{title}</p>
 				</span>
-				<button onClick={onClick}>
-					<img src={isOpen ? arrowClose : arrowOpen} alt="arrowButton" />
-				</button>
+				<span className="collapsible-card-button">
+					<button onClick={onClick}>
+						<img src={isOpen ? arrowClose : arrowOpen} alt="arrowButton" />
+					</button>
+				</span>
 			</div>
 			{isOpen ? <div className="card open">{children}</div> : null}
 		</div>

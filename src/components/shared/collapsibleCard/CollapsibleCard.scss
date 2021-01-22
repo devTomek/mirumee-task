@@ -1,6 +1,6 @@
 @import "../../../variables.scss";
 
-.collapsibleCard {
+.collapsible-card {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -26,16 +26,18 @@
 			font-weight: $bold;
 		}
 	
-		button {
-			border: none;
-			outline: none;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 30px;
-			height: 30px;
-			background-color: $white;
-			cursor: pointer;
+		.collapsible-card-button {
+			button {
+				border: none;
+				outline: none;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 30px;
+				height: 30px;
+				background-color: $white;
+				cursor: pointer;
+			}
 		}
 	}
 
