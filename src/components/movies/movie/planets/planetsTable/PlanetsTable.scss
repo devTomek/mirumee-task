@@ -7,11 +7,11 @@
 	table {
 		border-collapse: collapse;
 		width: 100%;
-		color: $light-gray;
+		color: $dark-gray;
 		font-size: $m;
 
 		thead {
-			border-bottom: 1px solid $dark-gray;
+			border-bottom: 1px solid $light-gray;
 
 			tr {
 				
@@ -32,7 +32,7 @@
 						align-items: center;
 
 						.arrow {
-							color: $light-gray;
+							color: $dark-gray;
 							font-size: 1px;
 							padding: 0 5px;
 
