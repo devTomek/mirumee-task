@@ -18,11 +18,13 @@
 		"@types/react": "^16.14.2",
 		"@types/react-dom": "^16.9.10",
 		"@types/react-table": "^7.0.27",
+		"formik": "^2.2.6",
 		"node-sass": "^4.0.0",
 		"normalize.css": "^8.0.1",
 		"react-scripts": "4.0.1",
 		"react-table": "^7.6.3",
-		"web-vitals": "^0.2.4"
+		"web-vitals": "^0.2.4",
+		"yup": "^0.32.8"
 	},
 	"scripts": {
 		"start": "react-scripts start",
