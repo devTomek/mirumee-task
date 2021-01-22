@@ -11,57 +11,57 @@ const AddMovieForm: FC = () => {
 	const { t } = useTranslation();
 	const formik = useFormik({
 		initialValues: {
-			title: "",
-			addPlanet: "",
+			movieTitle: "",
+			planet: "",
 		},
 		onSubmit: (values) => {
 			alert(JSON.stringify(values, null, 2));
 		},
 		validationSchema: Yup.object({
-			title: Yup.string()
+			movieTitle: Yup.string()
 				.test("test-name", `${t("mustStartWithCapitalLetter")}.`, function () {
 					// @ts-ignore
 					return !!this.originalValue?.slice(0, 1).match(/[A-Z]/);
 				})
 				.min(3, `${t("atLeastThreeCharacters")}.`)
 				.required(t("Required")),
-			addPlanet: Yup.string().required(t("Required")),
+			planet: Yup.string().required(t("Required")),
 		}),
 	});
 	const buttonDisabled =
-		!!(formik.touched.title && formik.errors.title) ||
-		!!(formik.touched.addPlanet && formik.errors.addPlanet);
+		!!(formik.touched.movieTitle && formik.errors.movieTitle) ||
+		!!(formik.touched.planet && formik.errors.planet);
 
 	return (
 		<div className="add-movie-form">
 			<form onSubmit={formik.handleSubmit}>
 				<div className="input-wrapper">
 					<Input
-						id="title"
-						name="title"
+						id="movieTitle"
+						name="movieTitle"
 						onChange={formik.handleChange}
-						value={formik.values.title}
+						value={formik.values.movieTitle}
 						placeholder={t("enterMovieTitle")}
 						label={t("movieTitle")}
 						errorText={
-							formik.touched.title && formik.errors.title
-								? formik.errors.title
+							formik.touched.movieTitle && formik.errors.movieTitle
+								? formik.errors.movieTitle
 								: ""
 						}
 					/>
 				</div>
 				<div className="input-wrapper">
 					<Input
-						id="addPlanet"
-						name="addPlanet"
+						id="planet"
+						name="planet"
 						onChange={formik.handleChange}
-						value={formik.values.addPlanet}
+						value={formik.values.planet}
 						placeholder={t("searchPlanet")}
 						label={t("addPlanet")}
 						icon={search}
 						errorText={
-							formik.touched.addPlanet && formik.errors.addPlanet
-								? formik.errors.addPlanet
+							formik.touched.planet && formik.errors.planet
+								? formik.errors.planet
 								: ""
 						}
 					/>
