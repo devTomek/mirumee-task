@@ -1,0 +1,44 @@
+@import "../../../variables.scss";
+
+.input {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+
+	input {
+		border: none;
+		border-bottom: 1px solid $dark-gray;
+		outline: none;
+		color: $dark-gray;
+
+		&::placeholder {
+			color: $light-gray;
+		}
+	}
+
+	label {
+		font-size: $m;
+		color: $dark-gray;
+	}
+
+	img {
+		position: absolute;
+		right: 0;
+		bottom: 1px;
+		background-color: $white;
+		padding: 0 5px;
+	}
+
+	.error {
+		border: 1px solid $red;
+		margin-top: 1px;
+		padding: 8px;
+		color: $red;
+		box-shadow: 0px 4px 4px #c4c4c480;
+		font-size: $m;
+	}
+
+	.red {
+		color: $red;
+	}
+}
