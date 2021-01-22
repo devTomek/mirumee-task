@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import "./Table.scss";
+import "./PlanetsTable.scss";
 import { Column, useSortBy, useTable } from "react-table";
 import { IPlanet } from "../../../../../api/planet/types";
 
@@ -8,7 +8,7 @@ interface IProps {
 	columns: Column<IPlanet>[];
 }
 
-const Table: FC<IProps> = ({ data, columns }) => {
+const PlanetsTable: FC<IProps> = ({ data, columns }) => {
 	const {
 		getTableProps,
 		getTableBodyProps,
@@ -19,7 +19,7 @@ const Table: FC<IProps> = ({ data, columns }) => {
 
 	//▼ ▲
 	return (
-		<div className="table">
+		<div className="planets-table">
 			<table {...getTableProps()}>
 				<thead>
 					{headerGroups.map((headerGroup) => (
@@ -76,4 +76,4 @@ const Table: FC<IProps> = ({ data, columns }) => {
 	);
 };
 
-export default Table;
+export default PlanetsTable;

@@ -5,7 +5,7 @@ import { Column } from "react-table";
 import { getPlanet } from "../../../../api/planet/planet";
 import { IPlanet } from "../../../../api/planet/types";
 import Spinner from "../../../shared/spinner/Spinner";
-import Table from "./table/Table";
+import PlanetsTable from "./planetsTable/PlanetsTable";
 
 interface IProps {
 	planetUrls: string[];
@@ -54,7 +54,7 @@ const Planets: FC<IProps> = ({ planetUrls }) => {
 					<Spinner />
 				</div>
 			) : (
-				<Table data={planets} columns={columns} />
+				<PlanetsTable data={planets} columns={columns} />
 			)}
 		</div>
 	);
