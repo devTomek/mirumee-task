@@ -5,8 +5,11 @@ import Container from "./components/shared/container/Container";
 import Movies from "./components/movies/Movies";
 import Divider from "./components/shared/divider/Divider";
 import AddMovie from "./components/addMovie/AddMovie";
+import { useTranslation } from "react-i18next";
 
 const App: FC = () => {
+	const { t } = useTranslation();
+
 	return (
 		<div className="app">
 			<Container>
@@ -14,6 +17,9 @@ const App: FC = () => {
 				<Movies />
 				<Divider />
 				<AddMovie />
+				<div className="footer">
+					<p>{t("copyright")}</p>
+				</div>
 			</Container>
 		</div>
 	);

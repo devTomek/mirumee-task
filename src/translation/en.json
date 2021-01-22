@@ -13,5 +13,6 @@
 	"searchPlanet": "Search for the planet in the database",
 	"mustStartWithCapitalLetter": "Movie title name must start with a capital letter",
 	"atLeastThreeCharacters": "Movie title name must be at least 3 characters long",
-	"required": "Required"
+	"required": "Required",
+	"copyright": "Copyright © 2019 Mirumee Software"
 }
