@@ -10,6 +10,7 @@
 		border-bottom: 1px solid $dark-gray;
 		outline: none;
 		color: $dark-gray;
+		padding: 5px 0;
 
 		&::placeholder {
 			color: $light-gray;
@@ -23,10 +24,9 @@
 
 	img {
 		position: absolute;
-		right: 0;
-		bottom: 1px;
+		right: 5px;
+		bottom: 5px;
 		background-color: $white;
-		padding: 0 5px;
 	}
 
 	.error {
