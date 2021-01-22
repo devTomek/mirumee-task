@@ -7,13 +7,6 @@ import search from "../../../assets/SEARCH.svg";
 import Button from "../../shared/button/Button";
 import "./AddMovieForm.scss";
 
-Yup.addMethod(Yup.string, "capitalLetter", function () {
-	return this.transform(function (value, originalValue) {
-		console.log({ value, originalValue });
-		return "";
-	});
-});
-
 const AddMovieForm: FC = () => {
 	const { t } = useTranslation();
 	const formik = useFormik({
@@ -26,16 +19,18 @@ const AddMovieForm: FC = () => {
 		},
 		validationSchema: Yup.object({
 			title: Yup.string()
-				.matches(
-					/^[A-Z][a-z0-9_-]{3,19}$/,
-					`${t("mustStartWithCapitalLetter")}.`
-				)
-				.required(t("Required")),
-			addPlanet: Yup.string()
+				.test("test-name", `${t("mustStartWithCapitalLetter")}.`, function () {
+					// @ts-ignore
+					return !!this.originalValue?.slice(0, 1).match(/[A-Z]/);
+				})
 				.min(3, `${t("atLeastThreeCharacters")}.`)
 				.required(t("Required")),
+			addPlanet: Yup.string().required(t("Required")),
 		}),
 	});
+	const buttonDisabled =
+		!!(formik.touched.title && formik.errors.title) ||
+		!!(formik.touched.addPlanet && formik.errors.addPlanet);
 
 	return (
 		<div className="add-movie-form">
@@ -72,7 +67,9 @@ const AddMovieForm: FC = () => {
 					/>
 				</div>
 				<div className="button-wrapper">
-					<Button type="submit">{t("addMovie")}</Button>
+					<Button disabled={buttonDisabled} type="submit">
+						{t("addMovie")}
+					</Button>
 				</div>
 			</form>
 		</div>
