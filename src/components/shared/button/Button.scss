@@ -15,5 +15,10 @@
 		padding: 10px;
 		cursor: pointer;
 		outline: none;
+
+		&:disabled {
+			background-color: $gray;
+			cursor: default;
+		}
 	}
 }
