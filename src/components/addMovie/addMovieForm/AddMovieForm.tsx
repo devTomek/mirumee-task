@@ -23,10 +23,14 @@ const AddMovieForm: FC = () => {
 		},
 		validationSchema: Yup.object({
 			movieTitle: Yup.string()
-				.test("test-name", `${t("mustStartWithCapitalLetter")}.`, function () {
-					// @ts-ignore
-					return !!this.originalValue?.slice(0, 1).match(/[A-Z]/);
-				})
+				.test(
+					"is-capital-letter",
+					`${t("mustStartWithCapitalLetter")}.`,
+					function () {
+						// @ts-ignore
+						return !!this.originalValue?.slice(0, 1).match(/[A-Z]/);
+					}
+				)
 				.min(3, `${t("atLeastThreeCharacters")}.`)
 				.required(t("Required")),
 			planet: Yup.string().required(t("Required")),
