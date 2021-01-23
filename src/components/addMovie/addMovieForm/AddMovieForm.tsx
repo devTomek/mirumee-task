@@ -8,6 +8,7 @@ import Button from "../../shared/button/Button";
 import "./AddMovieForm.scss";
 import PlanetsDropdown from "./planetDropdown/PlanetsDropdown";
 import ChosenPlanets from "./chosenPlanets/ChosenPlanets";
+import { IMovie } from "../../../api/movie/types";
 
 const AddMovieForm: FC = () => {
 	const { t } = useTranslation();
@@ -19,7 +20,13 @@ const AddMovieForm: FC = () => {
 			planet: "",
 		},
 		onSubmit: (values) => {
-			alert(JSON.stringify(values, null, 2));
+			const movie: IMovie = {
+				title: values.movieTitle,
+				planets: chosenPlanets,
+			};
+			alert(JSON.stringify(movie, null, 2));
+			setChosenPlanets([]);
+			formik.resetForm();
 		},
 		validationSchema: Yup.object({
 			movieTitle: Yup.string()
