@@ -1,17 +1,12 @@
-import React, { FC, useEffect, useState } from "react";
-import { getMovies } from "../../api/movie/movie";
+import React, { FC } from "react";
 import { IMovie } from "../../api/movie/types";
 import Movie from "./movie/Movie";
 
-const Movies: FC = () => {
-	const [movies, setMovies] = useState<IMovie[]>([]);
+interface IProps {
+	movies: IMovie[];
+}
 
-	useEffect(() => {
-		getMovies().then((movies) => {
-			setMovies(movies || []);
-		});
-	}, []);
-
+const Movies: FC<IProps> = ({ movies }) => {
 	return (
 		<>
 			{movies.map(({ title, planets }) => (

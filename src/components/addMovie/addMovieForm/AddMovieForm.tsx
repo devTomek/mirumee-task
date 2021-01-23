@@ -11,7 +11,11 @@ import ChosenPlanets from "./chosenPlanets/ChosenPlanets";
 import { IMovie } from "../../../api/movie/types";
 import { IPlanet } from "../../../api/planet/types";
 
-const AddMovieForm: FC = () => {
+interface IProps {
+	updateMovies: (prevMovies: IMovie[]) => void;
+}
+
+const AddMovieForm: FC<IProps> = ({ updateMovies }) => {
 	const { t } = useTranslation();
 	const [chosenPlanets, setChosenPlanets] = useState<IPlanet[]>([]);
 	const [chosenPlanet, setChosenPlanet] = useState<IPlanet>();
@@ -23,9 +27,10 @@ const AddMovieForm: FC = () => {
 		onSubmit: (values) => {
 			const movie: IMovie = {
 				title: values.movieTitle,
-				planets: chosenPlanets.map(({url}) => url || ""),
+				planets: chosenPlanets.map(({ url }) => url || ""),
 			};
-			alert(JSON.stringify(movie, null, 2));
+			// @ts-ignore
+			updateMovies((prevMovies) => [...prevMovies, movie]);
 			setChosenPlanets([]);
 			formik.resetForm();
 		},
