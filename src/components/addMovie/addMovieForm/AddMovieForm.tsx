@@ -55,6 +55,17 @@ const AddMovieForm: FC = () => {
 		formik.setFieldValue("planet", "");
 	};
 
+	const removePlanet = (planet: string) => {
+		setChosenPlanets((prevChosenPlanets) => {
+			const index = prevChosenPlanets.findIndex(
+				(prevChosenPlanet) => prevChosenPlanet === planet
+			);
+			const clone = [...prevChosenPlanets];
+			clone.splice(index, 1);
+			return clone;
+		});
+	};
+
 	return (
 		<div className="add-movie-form">
 			<form onSubmit={formik.handleSubmit} autoComplete="off">
@@ -74,9 +85,9 @@ const AddMovieForm: FC = () => {
 					/>
 				</div>
 				{chosenPlanets.length > 0 ? (
-					<ChosenPlanets planets={chosenPlanets} />
+					<ChosenPlanets planets={chosenPlanets} onClick={removePlanet} />
 				) : null}
-				<div className="input-wrapper">
+				<div className="input-wrapper planet-input">
 					<Input
 						id="planet"
 						name="planet"

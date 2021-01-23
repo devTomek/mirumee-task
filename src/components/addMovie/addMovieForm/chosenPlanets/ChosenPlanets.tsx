@@ -1,17 +1,21 @@
 import React, { FC } from "react";
-import Button from "../../../shared/button/Button";
+import CancellableButton from "../../../shared/cancellableButton/CancellableButton";
+import "./ChosenPlanets.scss";
 
 interface IProps {
 	planets: string[];
+	onClick: (planet: string) => void;
 }
 
-const ChosenPlanets: FC<IProps> = ({ planets }) => {
+const ChosenPlanets: FC<IProps> = ({ planets, onClick }) => {
 	return (
 		<div className="chosen-planets">
 			{planets.map((planet) => (
-				<Button key={planet} type="button">
-					{planet}
-				</Button>
+				<div key={planet} className="button-wrapper">
+					<CancellableButton type="button" onClick={() => onClick(planet)}>
+						{planet}
+					</CancellableButton>
+				</div>
 			))}
 		</div>
 	);

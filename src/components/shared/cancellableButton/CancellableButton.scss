@@ -1,0 +1,28 @@
+@import "../../../variables.scss";
+
+.cancellable-button {
+
+	button {
+		border: 1px solid $dark-gray;
+		border-radius: 18px;
+		background-color: $white;
+		padding: 6px 16px;
+		color: $dark-gray;
+		cursor: pointer;
+		outline: none;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		&:hover {
+			background-color: $lightest-gray;
+		}
+
+		.cross {
+			margin-left: 10px;
+			font-weight: $bold;
+			font-size: $m;
+			color: $dark-gray;
+		}
+	}
+}
