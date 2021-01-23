@@ -23,5 +23,11 @@
 			font-weight: $thin;
 		}
 	}
+}
 
+@media (max-width: 900px) {
+	.app {
+		margin-top: 5vh;
+		height: 95vh;
+	}
 }
