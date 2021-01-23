@@ -37,7 +37,7 @@ const AddMovieForm: FC = () => {
 
 	return (
 		<div className="add-movie-form">
-			<form onSubmit={formik.handleSubmit}>
+			<form onSubmit={formik.handleSubmit} autoComplete="off">
 				<div className="input-wrapper">
 					<Input
 						id="movieTitle"
