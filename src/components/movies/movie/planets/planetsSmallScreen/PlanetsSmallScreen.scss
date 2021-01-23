@@ -1,0 +1,25 @@
+@import "../../../../../variables.scss";
+
+.planets-small-screen {
+
+	.planet-card {
+		margin: 20px 0;
+
+		&:nth-child(even) {
+			background-color: $lightest-gray;
+		}
+
+		.row {
+			display: flex;
+			padding: 10px;
+
+			.column {
+				width: 50%;
+			}
+
+			.teal {
+				color: $teal;
+			}
+		}
+	}
+}

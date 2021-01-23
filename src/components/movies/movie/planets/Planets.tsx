@@ -1,4 +1,10 @@
-import React, { FC, useEffect, useState } from "react";
+import React, {
+	FC,
+	MutableRefObject,
+	useEffect,
+	useRef,
+	useState,
+} from "react";
 import "./Planets.scss";
 import { useTranslation } from "react-i18next";
 import { Column } from "react-table";
@@ -6,6 +12,7 @@ import { getPlanet } from "../../../../api/planet/planet";
 import { IPlanet } from "../../../../api/planet/types";
 import Spinner from "../../../shared/spinner/Spinner";
 import PlanetsTable from "./planetsTable/PlanetsTable";
+import PlanetsSmallScreen from "./planetsSmallScreen/PlanetsSmallScreen";
 
 interface IProps {
 	planetUrls: string[];
@@ -15,6 +22,10 @@ const Planets: FC<IProps> = ({ planetUrls }) => {
 	const [planets, setPlanets] = useState<IPlanet[]>([]);
 	const [columns, setColumns] = useState<Column<IPlanet>[]>([]);
 	const [isLoading, setIsLoading] = useState(false);
+	const [isSmallScreen, setIsSmallScreen] = useState(false);
+	const smallScreenTimeout: MutableRefObject<NodeJS.Timeout | null> = useRef(
+		null
+	);
 	const { t } = useTranslation();
 	const spinnerHeight = 50 * planetUrls.length;
 
@@ -44,6 +55,29 @@ const Planets: FC<IProps> = ({ planetUrls }) => {
 		}
 	}, [planets, t]);
 
+	useEffect(() => {
+		const checkSmallScreen = () => {
+			const isSmall = window.innerWidth <= 900;
+			setIsSmallScreen(isSmall);
+		};
+
+		const checkSmallScreenDebounced = () => {
+			if (smallScreenTimeout.current) {
+				clearTimeout(smallScreenTimeout.current);
+			}
+			smallScreenTimeout.current = setTimeout(checkSmallScreen, 500);
+		};
+
+		window.addEventListener("resize", checkSmallScreenDebounced);
+
+		return () => {
+			window.removeEventListener("resize", checkSmallScreenDebounced);
+			if (smallScreenTimeout.current) {
+				clearTimeout(smallScreenTimeout.current);
+			}
+		};
+	}, []);
+
 	return (
 		<div className="planets">
 			{isLoading ? (
@@ -53,6 +87,8 @@ const Planets: FC<IProps> = ({ planetUrls }) => {
 				>
 					<Spinner />
 				</div>
+			) : isSmallScreen ? (
+				<PlanetsSmallScreen planets={planets} />
 			) : (
 				<PlanetsTable data={planets} columns={columns} />
 			)}
