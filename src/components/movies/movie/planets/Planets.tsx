@@ -61,6 +61,8 @@ const Planets: FC<IProps> = ({ planetUrls }) => {
 			setIsSmallScreen(isSmall);
 		};
 
+		checkSmallScreen();
+
 		const checkSmallScreenDebounced = () => {
 			if (smallScreenTimeout.current) {
 				clearTimeout(smallScreenTimeout.current);
