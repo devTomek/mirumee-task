@@ -5,10 +5,10 @@ import CollapsibleCard from "../shared/collapsibleCard/CollapsibleCard";
 import AddMovieForm from "./addMovieForm/AddMovieForm";
 
 interface IProps {
-	updateMovies: (prevMovies: IMovie[]) => void;
+	updateMovie: (prevMovie: IMovie) => void;
 }
 
-const AddMovie: FC<IProps> = ({ updateMovies }) => {
+const AddMovie: FC<IProps> = ({ updateMovie }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const { t } = useTranslation();
 
@@ -16,7 +16,7 @@ const AddMovie: FC<IProps> = ({ updateMovies }) => {
 
 	return (
 		<CollapsibleCard isOpen={isOpen} onClick={toggle} title={t("addMovie")}>
-			<AddMovieForm updateMovies={updateMovies} />
+			<AddMovieForm updateMovie={updateMovie} />
 		</CollapsibleCard>
 	);
 };

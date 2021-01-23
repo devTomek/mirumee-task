@@ -12,10 +12,10 @@ import { IMovie } from "../../../api/movie/types";
 import { IPlanet } from "../../../api/planet/types";
 
 interface IProps {
-	updateMovies: (prevMovies: IMovie[]) => void;
+	updateMovie: (prevMovie: IMovie) => void;
 }
 
-const AddMovieForm: FC<IProps> = ({ updateMovies }) => {
+const AddMovieForm: FC<IProps> = ({ updateMovie }) => {
 	const { t } = useTranslation();
 	const [chosenPlanets, setChosenPlanets] = useState<IPlanet[]>([]);
 	const [chosenPlanet, setChosenPlanet] = useState<IPlanet>();
@@ -29,8 +29,7 @@ const AddMovieForm: FC<IProps> = ({ updateMovies }) => {
 				title: values.movieTitle,
 				planets: chosenPlanets.map(({ url }) => url || ""),
 			};
-			// @ts-ignore
-			updateMovies((prevMovies) => [...prevMovies, movie]);
+			updateMovie(movie);
 			setChosenPlanets([]);
 			formik.resetForm();
 		},
