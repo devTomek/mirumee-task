@@ -15,6 +15,10 @@
 
 			.column {
 				width: 50%;
+
+				&:first-child {
+					margin-right: 10px;
+				}
 			}
 
 			.teal {

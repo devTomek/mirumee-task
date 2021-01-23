@@ -8,3 +8,9 @@
 	padding: 30px;
 	border-radius: 8px;
 }
+
+@media (max-width: $small) {
+	.container {
+		width: 80%;
+	}
+}
