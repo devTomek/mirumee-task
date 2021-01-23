@@ -3,6 +3,7 @@ import { getPlanets } from "../../../../api/planet/planet";
 import { IPlanet } from "../../../../api/planet/types";
 import Spinner from "../../../shared/spinner/Spinner";
 import MagicDropdown from "./magicDropdown/MagicDropdown";
+import "./PlanetsDropdown.scss";
 
 interface IProps {
 	searchValue: string;
@@ -50,7 +51,12 @@ const PlanetsDropdown: FC<IProps> = ({
 		clearPlanetInput();
 	};
 
-	if (isLoading) return <Spinner />;
+	if (isLoading)
+		return (
+			<div className="spinner-wrapper">
+				<Spinner />
+			</div>
+		);
 
 	if (planets.length <= 0) return null;
 
