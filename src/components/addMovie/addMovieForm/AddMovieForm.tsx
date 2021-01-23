@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Input from "../../shared/input/Input";
@@ -12,6 +12,7 @@ import ChosenPlanets from "./chosenPlanets/ChosenPlanets";
 const AddMovieForm: FC = () => {
 	const { t } = useTranslation();
 	const [chosenPlanets, setChosenPlanets] = useState<string[]>([]);
+	const [chosenPlanet, setChosenPlanet] = useState("");
 	const formik = useFormik({
 		initialValues: {
 			movieTitle: "",
@@ -34,6 +35,21 @@ const AddMovieForm: FC = () => {
 	const buttonDisabled =
 		!!(formik.touched.movieTitle && formik.errors.movieTitle) ||
 		!!(formik.touched.planet && formik.errors.planet);
+
+	useEffect(() => {
+		if (!chosenPlanet) return;
+
+		setChosenPlanets((prevChosenPlanets) => {
+			const isAlreadyThere = (prevChosenPlanet: string) => {
+				return prevChosenPlanet === chosenPlanet;
+			};
+			if (!prevChosenPlanets.some(isAlreadyThere)) {
+				return [...prevChosenPlanets, chosenPlanet];
+			} else {
+				return prevChosenPlanets;
+			}
+		});
+	}, [chosenPlanet]);
 
 	return (
 		<div className="add-movie-form">
@@ -73,7 +89,7 @@ const AddMovieForm: FC = () => {
 					/>
 					<PlanetsDropdown
 						searchValue={formik.values.planet}
-						setChosenPlanets={setChosenPlanets}
+						setChosenPlanet={setChosenPlanet}
 					/>
 				</div>
 				<div className="button-wrapper">

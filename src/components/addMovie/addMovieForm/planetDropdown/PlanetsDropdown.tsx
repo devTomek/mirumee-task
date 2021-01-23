@@ -1,30 +1,35 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import { getPlanets } from "../../../../api/planet/planet";
-import Dropdown from "../../../shared/dropdown/Dropdown";
-import { IDropdownOption } from "../../../shared/dropdown/types";
+import Spinner from "../../../shared/spinner/Spinner";
+import MagicDropdown from "./magicDropdown/MagicDropdown";
 
 interface IProps {
 	searchValue: string;
-	setChosenPlanets: (prevChosenPlanets: string[]) => void;
+	// setChosenPlanets: (prevChosenPlanets: string[]) => void;
+	setChosenPlanet: (prevChosenPlanet: string) => void;
 }
 
-const PlanetsDropdown: FC<IProps> = ({ searchValue, setChosenPlanets }) => {
+const PlanetsDropdown: FC<IProps> = ({ searchValue, setChosenPlanet }) => {
 	const searchTimeoutRef = useRef<NodeJS.Timeout>();
-	const [planetOptions, setPlanetOptions] = useState<IDropdownOption[]>([]);
+	const [planetNames, setPlanetNames] = useState<string[]>([]);
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
-		if (!searchValue) return;
+		if (!searchValue) {
+			setPlanetNames([]);
+			setIsLoading(false);
+			return;
+		}
 
 		if (searchTimeoutRef.current) {
 			clearTimeout(searchTimeoutRef.current);
 		}
+		setIsLoading(true);
 		const getPlanetsData = () =>
 			getPlanets(searchValue).then((res) => {
-				const options = res?.map(({ name, url }) => ({
-					label: name,
-					value: url || "",
-				}));
-				setPlanetOptions(options || []);
+				const names = res?.map(({ name }) => name);
+				setPlanetNames(names || []);
+				setIsLoading(false);
 			});
 		searchTimeoutRef.current = setTimeout(getPlanetsData, 500);
 
@@ -35,15 +40,15 @@ const PlanetsDropdown: FC<IProps> = ({ searchValue, setChosenPlanets }) => {
 		};
 	}, [searchValue]);
 
-	const handleDropdownChange = (option: IDropdownOption) => {
-		// @ts-ignore
-		setChosenPlanets((prevChosenPlanets) => [
-			...prevChosenPlanets,
-			option.value,
-		]);
+	const onPlanetSelect = (planetName: string) => {
+		setChosenPlanet(planetName);
 	};
 
-	return <Dropdown options={planetOptions} onChange={handleDropdownChange} />;
+	if (isLoading) return <Spinner />;
+
+	if (planetNames.length <= 0) return null;
+
+	return <MagicDropdown planetNames={planetNames} onClick={onPlanetSelect} />;
 };
 
 export default PlanetsDropdown;
