@@ -1,3 +1,7 @@
+# Disclaimer!
+
+I used [https://swapi.py4e.com/api](https://swapi.py4e.com/api), the fork of [https://swapi.dev/](https://swapi.dev/) because SSL certificate has expired so something can be broken.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -28,6 +32,10 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run deploy`
+
+Runs `npm run predeploy` which runs `npm run build` and pushes `build` directory to `gh-pages` branch.
 
 ### `npm run eject`
 

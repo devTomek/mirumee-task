@@ -1,4 +1,5 @@
-export const BASE_URL = "https://swapi.dev/api";
+// export const BASE_URL = "of https://swapi.dev";
+export const BASE_URL = "https://swapi.py4e.com/api";
 
 export const get = async <T>(url: string): Promise<T | undefined> => {
 	try {
