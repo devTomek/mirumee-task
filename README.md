@@ -2,6 +2,15 @@
 
 I used [https://swapi.py4e.com/api](https://swapi.py4e.com/api), the fork of [https://swapi.dev/](https://swapi.dev/) because SSL certificate has expired so something can be broken.
 
+<br>
+
+# Technologies
+
+- node 14.15.1
+- typescript 4.1.3
+
+<br>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
