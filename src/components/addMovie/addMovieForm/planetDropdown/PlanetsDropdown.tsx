@@ -1,11 +1,12 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import { getPlanets } from "../../../../api/planet/planet";
+import { IPlanet } from "../../../../api/planet/types";
 import Spinner from "../../../shared/spinner/Spinner";
 import MagicDropdown from "./magicDropdown/MagicDropdown";
 
 interface IProps {
 	searchValue: string;
-	setChosenPlanet: (prevChosenPlanet: string) => void;
+	setChosenPlanet: (prevChosenPlanet: IPlanet) => void;
 	clearPlanetInput: () => void;
 }
 
@@ -15,12 +16,12 @@ const PlanetsDropdown: FC<IProps> = ({
 	clearPlanetInput,
 }) => {
 	const searchTimeoutRef = useRef<NodeJS.Timeout>();
-	const [planetNames, setPlanetNames] = useState<string[]>([]);
+	const [planets, setPlanets] = useState<IPlanet[]>([]);
 	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		if (!searchValue) {
-			setPlanetNames([]);
+			setPlanets([]);
 			setIsLoading(false);
 			return;
 		}
@@ -31,8 +32,7 @@ const PlanetsDropdown: FC<IProps> = ({
 		setIsLoading(true);
 		const getPlanetsData = () =>
 			getPlanets(searchValue).then((res) => {
-				const names = res?.map(({ name }) => name);
-				setPlanetNames(names || []);
+				setPlanets(res || []);
 				setIsLoading(false);
 			});
 		searchTimeoutRef.current = setTimeout(getPlanetsData, 500);
@@ -44,17 +44,17 @@ const PlanetsDropdown: FC<IProps> = ({
 		};
 	}, [searchValue]);
 
-	const onPlanetSelect = (planetName: string) => {
-		setChosenPlanet(planetName);
-		setPlanetNames([]);
+	const onPlanetSelect = (planet: IPlanet) => {
+		setChosenPlanet(planet);
+		setPlanets([]);
 		clearPlanetInput();
 	};
 
 	if (isLoading) return <Spinner />;
 
-	if (planetNames.length <= 0) return null;
+	if (planets.length <= 0) return null;
 
-	return <MagicDropdown planetNames={planetNames} onClick={onPlanetSelect} />;
+	return <MagicDropdown planets={planets} onClick={onPlanetSelect} />;
 };
 
 export default PlanetsDropdown;

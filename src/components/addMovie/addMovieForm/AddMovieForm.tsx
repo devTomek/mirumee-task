@@ -9,11 +9,12 @@ import "./AddMovieForm.scss";
 import PlanetsDropdown from "./planetDropdown/PlanetsDropdown";
 import ChosenPlanets from "./chosenPlanets/ChosenPlanets";
 import { IMovie } from "../../../api/movie/types";
+import { IPlanet } from "../../../api/planet/types";
 
 const AddMovieForm: FC = () => {
 	const { t } = useTranslation();
-	const [chosenPlanets, setChosenPlanets] = useState<string[]>([]);
-	const [chosenPlanet, setChosenPlanet] = useState("");
+	const [chosenPlanets, setChosenPlanets] = useState<IPlanet[]>([]);
+	const [chosenPlanet, setChosenPlanet] = useState<IPlanet>();
 	const formik = useFormik({
 		initialValues: {
 			movieTitle: "",
@@ -22,7 +23,7 @@ const AddMovieForm: FC = () => {
 		onSubmit: (values) => {
 			const movie: IMovie = {
 				title: values.movieTitle,
-				planets: chosenPlanets,
+				planets: chosenPlanets.map(({url}) => url || ""),
 			};
 			alert(JSON.stringify(movie, null, 2));
 			setChosenPlanets([]);
@@ -50,8 +51,8 @@ const AddMovieForm: FC = () => {
 		if (!chosenPlanet) return;
 
 		setChosenPlanets((prevChosenPlanets) => {
-			const isAlreadyThere = (prevChosenPlanet: string) => {
-				return prevChosenPlanet === chosenPlanet;
+			const isAlreadyThere = (prevChosenPlanet: IPlanet) => {
+				return prevChosenPlanet.name === chosenPlanet.name;
 			};
 			if (!prevChosenPlanets.some(isAlreadyThere)) {
 				return [...prevChosenPlanets, chosenPlanet];
@@ -65,10 +66,10 @@ const AddMovieForm: FC = () => {
 		formik.setFieldValue("planet", "");
 	};
 
-	const removePlanet = (planet: string) => {
+	const removePlanet = (planet: IPlanet) => {
 		setChosenPlanets((prevChosenPlanets) => {
 			const index = prevChosenPlanets.findIndex(
-				(prevChosenPlanet) => prevChosenPlanet === planet
+				(prevChosenPlanet) => prevChosenPlanet.name === planet.name
 			);
 			const clone = [...prevChosenPlanets];
 			clone.splice(index, 1);

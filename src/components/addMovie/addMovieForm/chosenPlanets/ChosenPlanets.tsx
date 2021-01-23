@@ -1,19 +1,20 @@
 import React, { FC } from "react";
+import { IPlanet } from "../../../../api/planet/types";
 import CancellableButton from "../../../shared/cancellableButton/CancellableButton";
 import "./ChosenPlanets.scss";
 
 interface IProps {
-	planets: string[];
-	onClick: (planet: string) => void;
+	planets: IPlanet[];
+	onClick: (planet: IPlanet) => void;
 }
 
 const ChosenPlanets: FC<IProps> = ({ planets, onClick }) => {
 	return (
 		<div className="chosen-planets">
 			{planets.map((planet) => (
-				<div key={planet} className="button-wrapper">
+				<div key={planet.name} className="button-wrapper">
 					<CancellableButton type="button" onClick={() => onClick(planet)}>
-						{planet}
+						{planet.name}
 					</CancellableButton>
 				</div>
 			))}
