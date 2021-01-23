@@ -5,7 +5,6 @@ import MagicDropdown from "./magicDropdown/MagicDropdown";
 
 interface IProps {
 	searchValue: string;
-	// setChosenPlanets: (prevChosenPlanets: string[]) => void;
 	setChosenPlanet: (prevChosenPlanet: string) => void;
 }
 
