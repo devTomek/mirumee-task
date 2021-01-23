@@ -4,7 +4,10 @@
 	border: 1px solid #E5E5E5;
 	color: $dark-gray;
 	box-shadow: 0px 4px 4px #c4c4c480;
-	transform: translateY(-19px);
+	position: absolute;
+	width: 100%;
+	background-color: $white;
+	transform: translateY(1px);
 	padding: 10px 0;
 
 	.planet-name {

@@ -6,9 +6,14 @@ import MagicDropdown from "./magicDropdown/MagicDropdown";
 interface IProps {
 	searchValue: string;
 	setChosenPlanet: (prevChosenPlanet: string) => void;
+	clearPlanetInput: () => void;
 }
 
-const PlanetsDropdown: FC<IProps> = ({ searchValue, setChosenPlanet }) => {
+const PlanetsDropdown: FC<IProps> = ({
+	searchValue,
+	setChosenPlanet,
+	clearPlanetInput,
+}) => {
 	const searchTimeoutRef = useRef<NodeJS.Timeout>();
 	const [planetNames, setPlanetNames] = useState<string[]>([]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -41,6 +46,8 @@ const PlanetsDropdown: FC<IProps> = ({ searchValue, setChosenPlanet }) => {
 
 	const onPlanetSelect = (planetName: string) => {
 		setChosenPlanet(planetName);
+		setPlanetNames([]);
+		clearPlanetInput();
 	};
 
 	if (isLoading) return <Spinner />;

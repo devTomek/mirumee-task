@@ -51,6 +51,10 @@ const AddMovieForm: FC = () => {
 		});
 	}, [chosenPlanet]);
 
+	const clearPlanetInput = () => {
+		formik.setFieldValue("planet", "");
+	};
+
 	return (
 		<div className="add-movie-form">
 			<form onSubmit={formik.handleSubmit} autoComplete="off">
@@ -90,6 +94,7 @@ const AddMovieForm: FC = () => {
 					<PlanetsDropdown
 						searchValue={formik.values.planet}
 						setChosenPlanet={setChosenPlanet}
+						clearPlanetInput={clearPlanetInput}
 					/>
 				</div>
 				<div className="button-wrapper">
