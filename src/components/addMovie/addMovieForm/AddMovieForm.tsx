@@ -32,8 +32,7 @@ const AddMovieForm: FC = () => {
 					}
 				)
 				.min(3, `${t("atLeastThreeCharacters")}.`)
-				.required(t("Required")),
-			planet: Yup.string().required(t("Required")),
+				.required(t("required")),
 		}),
 	});
 	const buttonDisabled =
@@ -101,8 +100,8 @@ const AddMovieForm: FC = () => {
 						label={t("addPlanet")}
 						icon={search}
 						errorText={
-							formik.touched.planet && formik.errors.planet
-								? formik.errors.planet
+							formik.touched.planet && chosenPlanets.length <= 0
+								? t("required")
 								: ""
 						}
 					/>
