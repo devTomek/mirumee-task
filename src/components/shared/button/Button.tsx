@@ -3,7 +3,7 @@ import "./Button.scss";
 
 interface IProps {
 	onClick?: () => void;
-	type?: "button" | "submit" | "reset" | undefined;
+	type?: "button" | "submit" | "reset";
 	disabled?: boolean;
 }
 
