@@ -81,7 +81,7 @@ const Planets: FC<IProps> = ({ planetUrls }) => {
 	}, []);
 
 	return (
-		<div className="planets">
+		<div data-testid="planets" className="planets">
 			{isLoading ? (
 				<div
 					className="spinner-wrapper"

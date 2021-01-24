@@ -4,7 +4,7 @@ import spinner from "../../../assets/SPINNER.svg";
 
 const Spinner: FC = () => {
 	return (
-		<div className="spinner">
+		<div data-testid="spinner" className="spinner">
 			<img src={spinner} alt="spinner" />
 		</div>
 	);
