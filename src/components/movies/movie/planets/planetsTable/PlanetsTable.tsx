@@ -19,7 +19,7 @@ const PlanetsTable: FC<IProps> = ({ data, columns }) => {
 
 	//▼ ▲
 	return (
-		<div className="planets-table">
+		<div data-testid="planets-table" className="planets-table">
 			<table {...getTableProps()}>
 				<thead>
 					{headerGroups.map((headerGroup) => (
