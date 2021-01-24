@@ -56,7 +56,7 @@ const App: FC = () => {
 				<Movies movies={moviesToRender} />
 				<Divider />
 				<AddMovie updateMovie={updateMovie} />
-				<div className="footer">
+				<div data-testid="footer" className="footer">
 					<p>{t("copyright")}</p>
 				</div>
 			</Container>

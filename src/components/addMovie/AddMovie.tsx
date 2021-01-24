@@ -15,9 +15,11 @@ const AddMovie: FC<IProps> = ({ updateMovie }) => {
 	const toggle = () => setIsOpen((prevIsOpen) => !prevIsOpen);
 
 	return (
-		<CollapsibleCard isOpen={isOpen} onClick={toggle} title={t("addMovie")}>
-			<AddMovieForm updateMovie={updateMovie} />
-		</CollapsibleCard>
+		<span data-testid="add-movie">
+			<CollapsibleCard isOpen={isOpen} onClick={toggle} title={t("addMovie")}>
+				<AddMovieForm updateMovie={updateMovie} />
+			</CollapsibleCard>
+		</span>
 	);
 };
 
