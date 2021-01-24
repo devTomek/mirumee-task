@@ -82,7 +82,7 @@ const AddMovieForm: FC<IProps> = ({ updateMovie }) => {
 	};
 
 	return (
-		<div className="add-movie-form">
+		<div data-testid="add-movie-form" className="add-movie-form">
 			<form onSubmit={formik.handleSubmit} autoComplete="off">
 				<div className="input-wrapper">
 					<Input
