@@ -60,7 +60,11 @@ const PlanetsDropdown: FC<IProps> = ({
 
 	if (planets.length <= 0) return null;
 
-	return <MagicDropdown planets={planets} onClick={onPlanetSelect} />;
+	return (
+		<span data-testid="planets-dropdown">
+			<MagicDropdown planets={planets} onClick={onPlanetSelect} />
+		</span>
+	);
 };
 
 export default PlanetsDropdown;

@@ -10,7 +10,7 @@ interface IProps {
 
 const ChosenPlanets: FC<IProps> = ({ planets, onClick }) => {
 	return (
-		<div className="chosen-planets">
+		<div data-testid="chosen-planets" className="chosen-planets">
 			{planets.map((planet) => (
 				<div key={planet.name} className="button-wrapper">
 					<CancellableButton type="button" onClick={() => onClick(planet)}>
