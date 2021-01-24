@@ -23,7 +23,7 @@ const Input: FC<IProps> = ({
 	errorText,
 }) => {
 	return (
-		<div className="input">
+		<div data-testid="input" className="input">
 			{label ? (
 				<label htmlFor="input" className={errorText ? "red" : ""}>
 					{label}
