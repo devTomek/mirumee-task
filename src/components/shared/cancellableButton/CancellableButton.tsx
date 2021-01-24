@@ -11,7 +11,7 @@ const CancellableButton: FC<IProps> = ({ children, onClick, type }) => {
 		<div className="cancellable-button">
 			<button onClick={onClick} type={type}>
 				{children}
-				<span className="cross">&#x2715;</span>
+				<span data-testid="cross" className="cross">&#x2715;</span>
 			</button>
 		</div>
 	);
