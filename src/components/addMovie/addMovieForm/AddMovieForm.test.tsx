@@ -50,4 +50,15 @@ describe("AddMovieForm", () => {
 		expect(screen.getByPlaceholderText(/searchPlanet/).textContent).toEqual("");
 		expect(screen.queryByText(/Tatooing/)).not.toBeInTheDocument();
 	});
+
+	it("should remove planet from chosen planets", () => {
+		render(<AddMovieForm updateMovie={jest.fn()} />);
+		act(async () => {
+			userEvent.type(screen.getByPlaceholderText(/searchPlanet/), "t");
+			userEvent.click(await screen.findByText(/Tatooine/));
+			expect(await screen.findByText(/Tatooine/)).toBeInTheDocument();
+			userEvent.click(screen.getByText(/Tatooine/));
+			expect(screen.getByText(/Tatooine/)).not.toBeInTheDocument();
+		});
+	});
 });
