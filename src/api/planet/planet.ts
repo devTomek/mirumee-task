@@ -13,7 +13,7 @@ export const getPlanet = async (id: string): Promise<IPlanet> => {
 		name: planet?.name || "",
 		rotation_period: planet?.rotation_period || "",
 		orbital_period: planet?.orbital_period || "",
-		diameter: planet?.climate || "",
+		diameter: planet?.diameter || "",
 		climate: planet?.climate || "",
 		surface_water: planet?.surface_water || "",
 		population: planet?.population || "",
