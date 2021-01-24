@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/mirumee-task/static/css/main.5fb975cd.chunk.css",
-    "main.js": "/mirumee-task/static/js/main.cf7e9b63.chunk.js",
-    "main.js.map": "/mirumee-task/static/js/main.cf7e9b63.chunk.js.map",
+    "main.js": "/mirumee-task/static/js/main.862994d4.chunk.js",
+    "main.js.map": "/mirumee-task/static/js/main.862994d4.chunk.js.map",
     "runtime-main.js": "/mirumee-task/static/js/runtime-main.01f47ff3.js",
     "runtime-main.js.map": "/mirumee-task/static/js/runtime-main.01f47ff3.js.map",
     "static/css/2.679831fc.chunk.css": "/mirumee-task/static/css/2.679831fc.chunk.css",
@@ -25,6 +25,6 @@
     "static/css/2.679831fc.chunk.css",
     "static/js/2.de7fccaa.chunk.js",
     "static/css/main.5fb975cd.chunk.css",
-    "static/js/main.cf7e9b63.chunk.js"
+    "static/js/main.862994d4.chunk.js"
   ]
 }
